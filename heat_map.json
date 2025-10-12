@@ -60,7 +60,7 @@
       ],
       "mark": {
         "type": "text",
-        "text": "🏆",          // you can also use "★" or "W"
+        "text": "🏆",        
         "fontSize": 14,
         "dy": 0,
         "color": "white"
@@ -80,3 +80,4 @@
     "view": {"stroke": "transparent"}
   }
 }
+
