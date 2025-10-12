@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top 15 Surfers — Points by Event (WSL 2025)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
+  },
+  "transform": [
+    {"calculate": "toNumber(datum.Rank)", "as": "RankNum"},
+    {"filter": "datum.Name != null && datum.Name != ''"},
+    {"filter": "datum.RankNum <= 12"},
+    {
+      "fold": [
+        "1 Artboard","2 Artboard","3 Artboard","4 Artboard","5 Artboard",
+        "6 Artboard","7 Artboard","8 Artboard","9 Artboard","10 Artboard","11 Artboard"
+      ],
+      "as": ["Event", "Points"]
+    },
+    {"calculate": "toNumber(replace(datum.Event, ' Artboard', ''))", "as": "EventNum"}
+  ],
+
+  "layer": [
+    {
+      "mark": "rect",
+      "encoding": {
+        "x": {
+          "field": "EventNum",
+          "type": "ordinal",
+          "title": "Event Number",
+          "sort": [1,2,3,4,5,6,7,8,9,10,11],
+          "axis": {"labelAngle": 0}
+        },
+        "y": {
+          "field": "Name",
+          "type": "nominal",
+          "sort": {"field": "RankNum"},
+          "title": "Athlete"
+        },
+        "color": {
+          "field": "Points",
+          "type": "quantitative",
+          "title": "Points",
+          "scale": {"scheme": "blues"}
+        },
+        "tooltip": [
+          {"field": "RankNum", "title": "Rank"},
+          {"field": "Name", "title": "Athlete"},
+          {"field": "EventNum", "title": "Event"},
+          {"field": "Points", "title": "Points"}
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {"filter": "datum.Points == 10000"}
+      ],
+      "mark": {
+        "type": "text",
+        "text": "🏆",          // you can also use "★" or "W"
+        "fontSize": 14,
+        "dy": 0,
+        "color": "white"
+      },
+      "encoding": {
+        "x": {"field": "EventNum", "type": "ordinal"},
+        "y": {"field": "Name", "type": "nominal", "sort" : {"field": "RankNum"}}
+      }
+    }
+  ],
+
+  "width": 500,
+  "height": 600,
+  "config": {
+    "axis": {"labelFontSize": 11},
+    "title": {"fontSize": 18},
+    "view": {"stroke": "transparent"}
+  }
+}
