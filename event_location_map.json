@@ -11,8 +11,8 @@
   },
       "hconcat": [
         {
-          "width": 600,
-          "height": 300,
+          "width": 800,
+          "height": 400,
           "projection": {"type": "equalEarth", "rotate": [-100, 0, 0]},
           "layer": [
             {
@@ -71,4 +71,5 @@
         }
       ],
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
+
 } 
