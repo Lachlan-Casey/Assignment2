@@ -1,0 +1,75 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"title": {
+  "text": "WSL 2025 – Finals",
+  "anchor": "middle",
+  "fontSize": 20
+},
+"data": {
+  "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
+},
+"transform": [
+  {"calculate": "toNumber(datum.Rank)", "as": "FinalRank"},
+  {"filter": "datum.FinalRank <= 5"},
+  {
+    "window": [{"op": "rank", "as": "PointsRank"}],
+    "sort": [{"field": "Total Points", "order": "descending"}]
+  },
+  {"fold": ["FinalRank","PointsRank"], "as": ["Stage", "RankValue"]}
+],
+"layer": [
+  {
+    "mark": {"type": "line", "strokeWidth": 2, "opacity": 0.8, "color": "grey"},
+    "encoding": {
+      "x": {
+        "field": "Stage",
+        "type": "nominal",
+        "axis": {"labelAngle": 0, "labelFontWeight": "bold"},
+        "title": null,
+        "sort": ["PointsRank", "FinalRank"]
+      },
+      "y": {
+        "field": "RankValue",
+        "type": "quantitative",
+        "scale": {"domain": [1, 5.5], "reverse": true},
+        "axis": {"values": [1, 2, 3, 4, 5], "title": "Rank "}
+      },
+      "detail": {"field": "Name"}
+    }
+  },
+  {
+    "mark": {"type": "circle", "size": 800, "opacity": 1, "color": "#4682B4", "stroke": "black"},
+    "encoding": {
+      "x": {"field": "Stage", "type": "nominal", "sort": ["PointsRank", "FinalRank"]},
+      "y": {"field": "RankValue", "type": "quantitative"}
+    }
+  },
+  {
+    "mark": {"type": "text", "fontSize": 13, "fontWeight": "bold", "color": "white"},
+    "encoding": {
+      "x": {"field": "Stage", "type": "nominal", "sort": ["PointsRank", "FinalRank"]},
+      "y": {"field": "RankValue", "type": "quantitative"},
+      "text": {
+        "condition": [
+          {"test": "datum.Stage == 'PointsRank'", "field": "PointsRank"},
+          {"test": "datum.Stage == 'FinalRank'", "field": "FinalRank"}
+        ]
+      }
+    }
+  },
+  {
+    "mark": {"type": "text", "dx": 20, "dy": 7, "fontSize": 11, "align": "left"},
+    "encoding": {
+      "x": {"field": "Stage", "type": "nominal", "sort": ["PointsRank", "FinalRank"]},
+      "y": {"field": "RankValue", "type": "quantitative"},
+      "text": {"field": "Name"}
+    }
+  }
+],
+"width": 450,
+"height": 350,
+"config": {
+  "view": {"stroke": "transparent"},
+  "axis": {"labelFontSize": 12}
+}
+}
