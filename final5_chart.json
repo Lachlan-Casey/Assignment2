@@ -66,10 +66,12 @@
     }
   }
 ],
-"width": 450,
-"height": 350,
+"width": "container",
+"height": 400,
+"autosize": {"type": "fit", "contains": "padding"},
 "config": {
   "view": {"stroke": "transparent"},
   "axis": {"labelFontSize": 12}
 }
 }
+
