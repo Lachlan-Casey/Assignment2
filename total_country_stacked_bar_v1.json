@@ -39,8 +39,9 @@
       {"aggregate": "sum", "field": "Total Points", "title": "Athlete Total Points"}
     ]
   },
-  "width": 700,
+  "width": "container",
   "height": 400,
+  "autosize": {"type": "fit", "contains": "padding"},
   "config": {
     "bar": {"cornerRadiusEnd": 2},
     "view": {"stroke": "transparent"},
@@ -48,4 +49,5 @@
     "legend": {"orient": "right"}
   }
 }
+
 
