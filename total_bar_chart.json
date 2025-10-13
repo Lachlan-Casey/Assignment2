@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top 22 Athletes — Total Points (WSL 2025)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "width": 800,
+  "height": 600,
+  "config": {"legend": {"orient": "bottom"}, "view": {"stroke": "transparent"}},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
+  },
+  "transform": [
+    {"filter": "datum.Rank <= 22"}   
+  ],
+  "layer" : [
+  {
+  "mark": "bar",
+  "params": [{
+    "name": "country_filter",
+    "select": {"type": "point", "fields": ["Country"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "y": {
+      "field": "Name",
+      "type": "nominal",
+      "sort": "-x",                    
+      "title": "Athlete"
+    },
+    "x": {
+      "field": "Total Points",
+      "type": "quantitative",
+      "title": "Total Points"
+    },
+    "color": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {
+        "domain": [
+          "Australia", "Brazil", "United States of America",
+          "South Africa", "France", "Japan", "Portugal", "Italy","Indonesia", "Mexico"
+        ],
+        "range": [
+          "blue", "green", "#B31942",
+          "gold", "#9467bd", "#8c564b", "#e377c2", "orange","red", "yellow"
+        ]
+                }},
+    "opacity" : {"value" : 0.2, 
+                "condition" : {"param": "country_filter", "value": 1} },
+    "tooltip": [
+      {"field": "Rank", "title": "Rank"},
+      {"field": "Name", "title": "Athlete"},
+      {"field": "Country", "title": "Country"},
+      {"field": "Total Points", "title": "Total Points"}
+    ]
+    }
+  },  
+  {  
+    "mark": {"type": "text", "align": "left", "dx": 3, "fontSize": 11},
+    "encoding": {
+      "x": {"field": "Total Points", "type": "quantitative"},
+      "y": {"field": "Name", "type": "nominal", "sort" : "-x"},
+      "text": {"field": "Country"},
+      "color": {"value": "black"}
+    }
+  }
+  ]
+}

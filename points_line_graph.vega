@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top 10 Ranked Athletes — Cumulative Points (WSL 2025)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "params": [{
+    "name": "athelete",
+    "select": {"type": "point", "fields": ["Name"]},
+    "bind": "legend"
+  }],
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "1 Artboard","2 Artboard","3 Artboard","4 Artboard","5 Artboard",
+        "6 Artboard","7 Artboard","8 Artboard","9 Artboard","10 Artboard","11 Artboard"
+      ],
+      "as": ["Artboard", "Points"]
+    },
+    { "calculate": "replace(datum.Artboard, ' Artboard', '')", "as": "Artboard_Number", "type":"quantitative" },
+    { "calculate": "toNumber(replace(datum.Artboard, ' Artboard', ''))", "as": "Artboard_Number" },
+    { "filter": "datum.Rank <= 10" },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "Points",
+          "as": "CumulativePoints"
+        }
+      ],
+      "sort": [
+        {"field": "Name"},
+        {"field": "Artboard_Number", "order": "ascending"}
+      ],
+      "groupby": ["Name"]
+    }
+  ],
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {
+      "field": "Artboard_Number",
+      "type": "ordinal",
+      "title": "Event", 
+      "sort": "ascending"
+    },
+    "y": {
+      "field": "CumulativePoints",
+      "type": "quantitative",
+      "title": "Cumulative Points",
+      "scale": {"domainMin": 0}
+    },
+    "opacity" : {"value" : 0.2, 
+                "condition" : {"param": "athelete", "value": 1} },
+    "color": {
+      "field": "Name",
+      "type": "nominal",
+      "title": "Athlete"
+    },
+    "tooltip": [
+      {"field": "Name", "title": "Athlete"},
+      {"field": "Artboard_Number", "title": "Event"},
+      {"field": "CumulativePoints", "type": "quantitative", "title": "Cumulative Points"}
+    ]
+  },
+  "width": 800,
+  "height": 400,
+  "config": {
+    "legend": {"orient": "right"},
+    "view": {"stroke": "transparent"}
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Total Points by Country — Athlete Contributions (WSL 2025)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
+  },
+  "transform": [
+    {"filter": "datum.Name != null && datum.Name != ''"},
+    {"calculate": "toNumber(datum.Rank)", "as": "RankNum"},
+    // {"filter": "datum.RankNum <= 35"}
+  ],
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Country",
+      "sort": "-y"  
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Total Points",
+      "type": "quantitative",
+      "title": "Total Points (Sum of Athletes)"
+    },
+    "color": {
+      "field": "Name",
+      "type": "nominal",
+      "title": "Athlete",
+      "scale": {"scheme": "tealblues"}
+    },
+    "tooltip": [
+      {"field": "Country", "title": "Country"},
+      {"field": "Name", "title": "Athlete"},
+      {"aggregate": "sum", "field": "Total Points", "title": "Athlete Total Points"}
+    ]
+  },
+  "width": 700,
+  "height": 400,
+  "config": {
+    "bar": {"cornerRadiusEnd": 2},
+    "view": {"stroke": "transparent"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 14},
+    "legend": {"orient": "right"}
+  }
+}
