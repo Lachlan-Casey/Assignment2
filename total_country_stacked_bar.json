@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
@@ -9,9 +10,7 @@
     "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
   },
   "transform": [
-    {"filter": "datum.Name != null && datum.Name != ''"},
-    {"calculate": "toNumber(datum.Rank)", "as": "RankNum"},
-
+    {"calculate": "toNumber(datum.Rank)", "as": "RankNum"}
   ],
   "mark": {"type": "bar"},
   "encoding": {
@@ -25,21 +24,31 @@
       "aggregate": "sum",
       "field": "Total Points",
       "type": "quantitative",
-      "title": "Total Points (Sum of Athletes)"
+      "title": "Total Points Per Country"
     },
     "color": {
-      "field": "Name",
+      "field": "Country",
       "type": "nominal",
       "title": "Athlete",
-      "scale": {"scheme": "tealblues"}
-    },
+      "scale": {
+        "domain": [
+          "Australia", "Brazil", "United States of America",
+          "South Africa", "France", "Japan", "Portugal", "Italy","Indonesia", "Mexico", "Morocco"
+        ],
+        "range": [
+          "blue", "green", "#B31942",
+          "gold", "#9467bd", "#8c564b", "#e377c2", "orange","red", "yellow", "#c1272d"
+        ]
+                }
+      },
+    "detail": {"field": "Name"},
     "tooltip": [
       {"field": "Country", "title": "Country"},
       {"field": "Name", "title": "Athlete"},
       {"aggregate": "sum", "field": "Total Points", "title": "Athlete Total Points"}
     ]
   },
-  "width": "container",
+  "width": 800,
   "height": 400,
   "autosize": {"type": "fit", "contains": "padding"},
   "config": {
@@ -49,5 +58,3 @@
     "legend": {"orient": "right"}
   }
 }
-
-
