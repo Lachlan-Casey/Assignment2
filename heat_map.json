@@ -72,12 +72,14 @@
     }
   ],
 
-  "width": 500,
-  "height": 600,
+  "width": "container",
+  "height": 400,
+  "autosize": {"type": "fit", "contains": "padding"},
   "config": {
     "axis": {"labelFontSize": 11},
     "title": {"fontSize": 18},
     "view": {"stroke": "transparent"}
   }
 }
+
 
