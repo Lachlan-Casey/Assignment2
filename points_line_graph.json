@@ -66,10 +66,12 @@
       {"field": "CumulativePoints", "type": "quantitative", "title": "Cumulative Points"}
     ]
   },
-  "width": 800,
+  "width": "container",
   "height": 400,
+  "autosize": {"type": "fit", "contains": "padding"},
   "config": {
     "legend": {"orient": "right"},
     "view": {"stroke": "transparent"}
   }
 }
+
