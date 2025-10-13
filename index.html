@@ -112,14 +112,29 @@
   <div class="row">
     <div class="plot col-1" id="plot7"></div>
     <div class="text col-1">
-      <p><strong>Sample Paragraph 3:</strong> Vivamus vel mi sed eros dictum cursus. Proin eget neque quis mauris placerat facilisis.</p>
+      <p><strong>The Final 5:</strong> 
+        After 11 events the top 5 surfers based off total points face off for the world title
+      The tournement is structured so the number 1 ranked surfer only has to win heat to be crowned the champion
+      <strong>Match 1</strong> Rank #5 vs Rank Elimination
+      <strong>Match 2</strong> Winner of Match 1 vs Rank #3 Elimination
+      <strong>Match 3</strong> Winner of Match 2 vs Rank #2 Elimination
+      <strong>Title Match</strong> Winner of Match 3 vs Rank #1 Best of 3 heats
+
+      <strong>So what happened?</strong>
+      <strong>Match 1</strong> Rank #5 vs Rank Elimination
+      <strong>Match 2</strong> Winner of Match 1 vs Rank #3 Elimination
+      <strong>Match 3</strong> Winner of Match 2 vs Rank #2 Elimination
+      <strong>Title Match</strong> Winner of Match 3 vs Rank #1 Best of 3 heats (or #1 wins first match)     
+      </p>
     </div>
     <div class="plot col-1" id="plot8"></div>
   </div>
 
   <!-- Final centred text -->
   <footer>
-    <p>Sample Paragraph 4: Concluding remarks and insights go here.</p>
+    <p>Source : https://www.worldsurfleague.com/athletes/tour/mct?year=2025
+    Aurthor : Lachlan Casey
+    Class : FIT3179 Wednesday 10am</p>
   </footer>
 
   <!-- Vega Embeds -->
@@ -133,8 +148,8 @@
     vegaEmbed("#plot4", base + "total_bar_chart.json", opts);
     vegaEmbed("#plot5", base + "total_country_stacked_bar_v1.json", opts);
     vegaEmbed("#plot6", base + "final5_chart.json", opts);
-    vegaEmbed("#plot7", base + "final5_chart.json", opts);
-    vegaEmbed("#plot8", base + "heat_map.json", opts);
+    vegaEmbed("#plot7", base + "heat_map", opts);
+    vegaEmbed("#plot8", base + "final5_chart.json.json", opts);
   </script>
 </body>
 </html>
