@@ -11,7 +11,7 @@
   "transform": [
     {"filter": "datum.Name != null && datum.Name != ''"},
     {"calculate": "toNumber(datum.Rank)", "as": "RankNum"},
-    // {"filter": "datum.RankNum <= 35"}
+
   ],
   "mark": {"type": "bar"},
   "encoding": {
@@ -48,3 +48,4 @@
     "legend": {"orient": "right"}
   }
 }
+
