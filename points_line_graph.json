@@ -12,9 +12,9 @@
   }],
   "width": "container",
   "height": 400,
-  "autosize": {"type": "fit", "contains": "padding"},
+  "autosize": {"type": "fit", "contains": "content"},
   "config": {
-    "legend": {"orient": "bottom"},
+    "legend": {"orient": "right"},
     "view": {"stroke": "transparent"}
   },
   "data": {
@@ -75,6 +75,7 @@
     ]
   }
 }
+
 
 
 
