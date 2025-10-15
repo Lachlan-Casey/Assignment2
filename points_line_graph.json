@@ -12,12 +12,12 @@
   }],
   "width": "container",
   "height": 400,
-  "autosize": {"type": "fit", "contains": "content"},
+  "autosize": {"type": "fit", "contains": "padding"},
   "padding": {
   "top": 5,
   "bottom": 5,
   "left": 5,
-  "right": 10
+  "right": 30
 },
   "config": {
     "legend": {"orient": "right"},
@@ -80,6 +80,7 @@
     ]
   }
 }
+
 
 
 
