@@ -1,0 +1,136 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
+  },
+    "transform": [
+    {"calculate": "toNumber(datum.Rank)", "as": "RankNum"}, 
+    {
+    "calculate": "datum.Country == 'United States of America' ? 'USA' : datum.Country",
+    "as": "Country"
+  }
+  ],
+  "hconcat" : [
+  {
+  "title": {
+    "text": "Top 22 Athletes — Total Points ",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "width": 400,
+  "height": 400,
+  "transform": [
+    {"filter": "datum.Rank <= 22"}   
+  ],
+  "layer" : [
+  {
+  "mark": "bar",
+  "params": [{
+    "name": "country_filter",
+    "select": {"type": "point", "fields": ["Country"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "y": {
+      "field": "Name",
+      "type": "nominal",
+      "sort": "-x",                    
+      "title": "Athlete"
+    },
+    "x": {
+      "field": "Total Points",
+      "type": "quantitative",
+      "title": "Total Points"
+    },
+    "color": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {
+        "domain": [
+          "Australia", "Brazil", "USA",
+          "South Africa", "France", "Japan", "Portugal", "Italy","Indonesia", "Mexico"
+        ],
+        "range": [
+          "blue", "green", "#B31942",
+          "gold", "#9467bd", "#8c564b", "#e377c2", "orange","red", "yellow"
+        ]
+                }},
+    "opacity" : {"value" : 0.2, 
+                "condition" : {"param": "country_filter", "value": 1} },
+    "tooltip": [
+      {"field": "Rank", "title": "Rank"},
+      {"field": "Name", "title": "Athlete"},
+      {"field": "Country", "title": "Country"},
+      {"field": "Total Points", "title": "Total Points"}
+    ]
+    }
+  }
+  ]
+    },
+    {
+      "title": {
+    "text": "Total Points by Country — Athlete Contributions",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "mark": {"type": "bar"},
+  "params": [{
+    "name": "country_filter",
+    "select": {"type": "point", "fields": ["Country"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Country",
+      "sort": "-y" ,
+      "axis": { "labelAngle": 0}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Total Points",
+      "type": "quantitative",
+      "title": "Total Points Per Country"
+    },
+    "color": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Athlete",
+      "legend" : {"title" : "Country"},
+      "scale": {
+        "domain": [
+          "Australia", "Brazil", "USA",
+          "South Africa", "France", "Japan", "Portugal", "Italy","Indonesia", "Mexico", "Morocco"
+        ],
+        "range": [
+          "blue", "green", "#B31942",
+          "gold", "#9467bd", "#8c564b", "#e377c2", "orange","red", "yellow", "#c1272d"
+        ]
+                }
+                
+      },
+    "opacity" : {"value" : 0.2, 
+            "condition" : {"param": "country_filter", "value": 1} },
+    "detail": {"field": "Name"},
+    "tooltip": [
+      {"field": "Country", "title": "Country"},
+      {"field": "Name", "title": "Athlete"},
+      {"aggregate": "sum", "field": "Total Points", "title": "Athlete Total Points"}
+    ]
+  },
+  "width": 800,
+  "height": 400
+
+    }
+  ],
+  "autosize": {"type": "fit", "contains": "padding"},
+  "config": {
+    "bar": {"cornerRadiusEnd": 2},
+    "view": {"stroke": "transparent"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 14},
+    "legend": {"orient": "right"}
+  }
+}
+
