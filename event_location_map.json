@@ -65,7 +65,12 @@
                       },
               "encoding": {"longitude": {"field": "Longitude", "type": "quantitative"},
                             "latitude": {"field": "Latitude", "type": "quantitative"} ,
-                            "text": {"field": "Name"}}
+                            "text": {"field": "Name"}, 
+                             "tooltip": [
+                                {"field": "Event_Number",  "title": "Event Number"},
+                                {"field": "Name", "type": "nominal"}, 
+                                {"field": "Country", "type": "nominal"}
+                            ]}
             }
           ]
         }
@@ -73,3 +78,4 @@
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 
 } 
+
