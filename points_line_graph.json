@@ -10,6 +10,13 @@
     "select": {"type": "point", "fields": ["Name"]},
     "bind": "legend"
   }],
+  "width": "container",
+  "height": 400,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "config": {
+    "legend": {"orient": "right"},
+    "view": {"stroke": "transparent"}
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/Lachlan-Casey/Assignment2/refs/heads/main/wsl_mct_2025.csv"
   },
@@ -65,13 +72,7 @@
       {"field": "Artboard_Number", "title": "Event"},
       {"field": "CumulativePoints", "type": "quantitative", "title": "Cumulative Points"}
     ]
-  },
-  "width": "container",
-  "height": 400,
-  "autosize": {"type": "fit", "contains": "padding"},
-  "config": {
-    "legend": {"orient": "right"},
-    "view": {"stroke": "transparent"}
   }
 }
+
 
