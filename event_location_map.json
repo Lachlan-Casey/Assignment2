@@ -61,7 +61,7 @@
                         "dy": -8,
                         "baseline": "middle",
                         "fontStyle": "italic", 
-                        "size" : 8
+                        "size" : 9
                       },
               "encoding": {"longitude": {"field": "Longitude", "type": "quantitative"},
                             "latitude": {"field": "Latitude", "type": "quantitative"} ,
@@ -77,5 +77,6 @@
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 
 } 
+
 
 
