@@ -58,7 +58,7 @@
       "field": "CumulativePoints",
       "type": "quantitative",
       "title": "Cumulative Points",
-      "scale": {"domainMin": 0},
+      "scale": {"domainMin": 0}
     },
     "opacity" : {"value" : 0.2, 
                 "condition" : {"param": "athelete", "value": 1} },
@@ -74,6 +74,7 @@
     ]
   }
 }
+
 
 
 
