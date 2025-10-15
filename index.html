@@ -152,7 +152,7 @@
     </div>
   </div>
 
-  <!-- Row 3: 2/3 plot, 1/3 plot -->
+  <!-- Row 3: 2/3 plot, 1/3 text -->
   <div class="row">
     <div class="plot col-2" id="plot3"></div>
     <div class="text col-1">
@@ -176,10 +176,9 @@
     
   </div>
 
-  <!-- Row 4: 1/3 text, 2/3 plot -->
+  <!-- Row 4: 3/3 combined  plot -->
   <div class="row">
-    <div class="plot col-1" id="plot4"></div>
-    <div class="plot col-2" id="plot5"></div>
+    <div class="plot col-3" id="plot4"></div>
   </div>
 
   <!-- Row 5: 1/3 plot, 1/3 text, 1/3 plot -->
@@ -220,7 +219,7 @@
     vegaEmbed("#plot1", base + "event_location_map.json", opts);
     vegaEmbed("#plot2", base + "athelete_location.json", opts);
     vegaEmbed("#plot3", base + "points_line_graph.json", opts);
-    vegaEmbed("#plot4", base + "total_bar_chart.json", opts);
+    vegaEmbed("#plot4", base + "points_combined.json", opts);
     vegaEmbed("#plot5", base + "total_country_stacked_bar.json", opts);
     vegaEmbed("#plot6", base + "final5_chart.json", opts);
     vegaEmbed("#plot7", base + "heat_map.json", opts);
