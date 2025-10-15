@@ -14,7 +14,8 @@
   "height": 400,
   "autosize": {"type": "fit", "contains": "content"},
   "config": {
-    "legend": {"orient": "right"},
+    "legend": {"orient": "bottom"},
+    "direction": "horizontal",
     "view": {"stroke": "transparent"}
   },
   "data": {
@@ -59,7 +60,6 @@
       "type": "quantitative",
       "title": "Cumulative Points",
       "scale": {"domainMin": 0},
-      "sort" : "descending"
     },
     "opacity" : {"value" : 0.2, 
                 "condition" : {"param": "athelete", "value": 1} },
@@ -75,6 +75,7 @@
     ]
   }
 }
+
 
 
 
