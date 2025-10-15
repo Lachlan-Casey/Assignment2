@@ -17,7 +17,7 @@
     "anchor": "middle",
     "fontSize": 18
   },
-  "width": 300,
+  "width": 330,
   "height": 400,
   "transform": [
     {"filter": "datum.Rank <= 22"}   
@@ -120,7 +120,7 @@
       {"aggregate": "sum", "field": "Total Points", "title": "Athlete Total Points"}
     ]
   },
-  "width": 600,
+  "width": 660,
   "height": 400
 
     }
@@ -133,5 +133,6 @@
     "legend": {"orient": "right"}
   }
 }
+
 
 
