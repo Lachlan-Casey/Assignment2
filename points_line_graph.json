@@ -14,7 +14,7 @@
   "height": 400,
   "autosize": {"type": "fit", "contains": "content"},
   "config": {
-    "legend": {"orient": "right"}
+    "legend": {"orient": "right"},
     "view": {"stroke": "transparent"}
   },
   "data": {
@@ -74,6 +74,7 @@
     ]
   }
 }
+
 
 
 
