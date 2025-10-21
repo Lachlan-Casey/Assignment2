@@ -58,7 +58,7 @@
     }
   },
   {
-    "mark": {"type": "text", "dx": 20, "dy": 7, "fontSize": 11, "align": "left"},
+    "mark": {"type": "text", "dx": 23, "dy": 7, "fontSize": 11, "align": "left"},
     "encoding": {
       "x": {"field": "Stage", "type": "nominal", "sort": ["PointsRank", "FinalRank"]},
       "y": {"field": "RankValue", "type": "quantitative"},
@@ -74,4 +74,5 @@
   "axis": {"labelFontSize": 12}
 }
 }
+
 
