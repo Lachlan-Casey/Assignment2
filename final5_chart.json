@@ -1,7 +1,7 @@
 {
 "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 "title": {
-  "text": "WSL 2025 – Finals",
+  "text": "Finals - Total Points to Final Ranking",
   "anchor": "middle",
   "fontSize": 20
 },
@@ -74,5 +74,6 @@
   "axis": {"labelFontSize": 12}
 }
 }
+
 
 
